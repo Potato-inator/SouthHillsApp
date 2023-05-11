@@ -24,3 +24,24 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+ion-icon {
+    margin-right: 1%;
+}
+
+ion-list-header {
+    font-size: x-large;
+    font-weight: 500;
+}
+
+ion-item {
+    font-weight: 400;
+}
+
+#uw211 {
+    color: red;
+}
+
+ion-img {
+    width: 50%;
+}
