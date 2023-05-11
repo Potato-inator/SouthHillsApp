@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-tab2',
@@ -6,18 +6,33 @@ import { Component } from '@angular/core';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
+  @ViewChild('listenerOut', { static: true }) listenerOut!: ElementRef;
+  private values: string[] = ['resources', 'tools', 'contact'];
+  viewResources = true
+  viewTools = false
+  viewContact = false
 
-segment1Vis = false
-segment2Vis = false
-segment3Vis = false
+  segmentGroupChange = (ev: any) => {
+    const nativeEl = this.listenerOut.nativeElement;
+    if (!nativeEl) {
+      return;
+    }
 
-  segmentSelector(segment: number) {
-    if (segment == 1) {
-
-    } else if (segment == 2) {
-
-    } else [
-
-    ]
-  }
+    const collapsedItems = this.values.filter((value) => value !== ev.detail.value);
+    const selectedValue = ev.detail.value;
+    
+    if (selectedValue == "resources") {
+      this.viewTools = false
+      this.viewResources = true
+      this.viewContact = false
+    } else if (selectedValue == "tools") {
+      this.viewTools = true
+      this.viewResources = false
+      this.viewContact = false
+    } else {
+      this.viewTools = false
+      this.viewResources = false
+      this.viewContact = true
+    }
+  };
 }
